@@ -44,8 +44,10 @@ fun CustomTextField(
         ),
         singleLine = isSingleLine,
         colors = TextFieldDefaults.colors(
-            unfocusedTextColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent
+            disabledContainerColor = Color.Gray,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+
         ),
         trailingIcon = if (isPasswordTextField) {
             {

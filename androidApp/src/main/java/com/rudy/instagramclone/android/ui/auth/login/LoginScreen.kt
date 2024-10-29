@@ -1,4 +1,4 @@
-package com.rudy.instagramclone.android.ui.auth.signup
+package com.rudy.instagramclone.android.ui.auth.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ramcosta.composedestinations.annotation.Destination
 import com.rudy.instagramclone.android.R
 import com.rudy.instagramclone.android.common.component.CustomTextField
 import com.rudy.instagramclone.android.theme.ButtonHeight
@@ -30,13 +31,11 @@ import com.rudy.instagramclone.android.theme.LargeSpacing
 import com.rudy.instagramclone.android.theme.MediumSpacing
 
 @Composable
-fun SignUpScreen(
+fun LoginScreen(
     modifier: Modifier = Modifier,
-    uiState: SignUpUIState,
+    uiState: LoginUIState,
     onUsernameChange: (String) -> Unit,
-    onEmailChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit,
-    onNavigateToLogin : () -> Unit
+    onPasswordChange: (String) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -64,11 +63,6 @@ fun SignUpScreen(
             hint = R.string.username_hint
         )
         CustomTextField(
-            value = uiState.email,
-            onValueChange = onEmailChange,
-            hint = R.string.email_hint
-        )
-        CustomTextField(
             value = uiState.password,
             onValueChange = onPasswordChange,
             hint = R.string.password_hint,
@@ -76,16 +70,14 @@ fun SignUpScreen(
             isPasswordTextField = true
         )
         Button(
-            onClick = {
-                      onNavigateToLogin()
-            },
+            onClick = { },
             modifier = modifier
                 .fillMaxWidth()
                 .height(ButtonHeight),
             elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = stringResource(id = R.string.signup_button_hint))
+            Text(text = stringResource(id = R.string.login_label))
 
         }
     }
@@ -93,14 +85,8 @@ fun SignUpScreen(
 
 @Preview
 @Composable
-fun SignUpScreenPreview() {
+fun LoginScreenPreview() {
     InstagramAppTheme {
-        SignUpScreen(
-            uiState = SignUpUIState(),
-            onUsernameChange = {},
-            onEmailChange = {},
-            onPasswordChange = {},
-            onNavigateToLogin = {}
-        )
+        LoginScreen(uiState = LoginUIState(), onUsernameChange = {}, onPasswordChange = {})
     }
 }
